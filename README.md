@@ -1,0 +1,1 @@
+# How-to-Sql-column-recive-in-array-org
