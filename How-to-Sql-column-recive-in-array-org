@@ -1,0 +1,20 @@
+function total_price()
+{
+	global $db;
+	$ip=getRealIpAddr();
+	$total=0;
+	$qry=mysqli_query($db, "select * from cart where ip_add='$ip'");
+	while($row=mysqli_fetch_array($qry))
+	{
+		extract($row);
+		$qry1=mysqli_query($db,"select * from products where product_id='$p_id'");
+		while($row1=mysqli_fetch_array($qry1))
+		{
+			extract($row1);
+			$product_price=array($row1['product_price']); //here product_price is my sql column
+			$value=array_sum($product_price);
+			$total +=$value;
+		}
+	}
+	echo $total;
+}
